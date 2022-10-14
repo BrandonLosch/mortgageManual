@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>App Name: A Coding Challenge</title>
+    <title>MortgageManual: A Coding Challenge</title>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta
@@ -35,7 +35,7 @@
       <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
         <div class="container">
           <a class="navbar-brand" href="/index.html"
-            ><img src="/img/BIconWhite.png" height="50" />&nbsp;App Name</a
+            ><img src="/img/mortgage_logo.png" height="60" /></a
           >
           <button
             class="navbar-toggler"
@@ -63,14 +63,12 @@
                 <a class="nav-link" href="/code.html">Code</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Repo</a>
+                <a class="nav-link" href="https://github.com/BrandonLosch/mortgageManual">Repo</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="https://brandonlosch.com/">Portfolio</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Blog</a>
-              </li>
+            
             </ul>
           </div>
         </div>
@@ -78,11 +76,90 @@
     </header>
 
     <main class="content container">
-      <h1>App UI goes here</h1>
-      <input id="message" placeholder="Enter a Message" />
-      <button id="btnSubmit" type="button" class="btn btn-outline-primary">
-        Display Message
-      </button>
+      <div class="row">
+        <div class="col-5 mortgage-form-wrapper mb-4 mt-4">
+          <header>
+            <h1>Mortgage calculator</h1>
+          </header>
+          <form id="mortgage-form" action="" class="form-label">
+            <div class="mortgage-form--row">
+              <label for="amount-input">Principal loan amount</label>
+              <input type="number" name="amount-input" id="loanAmount" min="50000" placeholder="Min 50000" required>
+              <p class="mortgage-form--help">Min 50000</p>
+            </div>
+            <div class="mortgage-form--row">
+              <label for="length-of-loan-input">Length of loan</label>
+              <input type="number" name="payment-input" id="payments" min="1" max="40" placeholder="Min 1 month, max 40 years" required>
+              <p class="mortgage-form--help">Min 1 month, max 40 years</p>
+            </div>
+            <div class="mortgage-form--row">
+              <label for="interest-rate-input">Interest rate</label>
+              <input type="number" name="intrest-input" id="rate" min="1" max="20" placeholder="Min 1% max 20%" required>
+              <p class="mortgage-form--help">Min 1% max 20%, without '%' symbol</p>
+            </div>
+            
+            <div class="mortgage-form--row mortgage-form text-center">
+              <button type="button" class="btn btn-outline-primary " id="btnSubmit">Calculate</button>
+              <button type="reset" id="reset-btn" class="reset-btn">Reset</button>
+            </div>
+          </form>
+          
+        </div>
+        <div class="col-6 mortgage-form-wrapper ms-4 mt-4 mb-4">
+          <h2 class="text-center">Your Monthly Payments</h2>
+          <h2 class="text-center" id="monthlyPayment">0</h2>
+          <div class="container-fluid mt-5">
+          <div class="row">
+            <div class="col">
+            <h4>Total Principal:</h4>
+          </div>
+          <div class="col items-end">
+            <h4 id="totalPrincipal">0</h4>
+          </div>
+          </div>
+          <div class="row">
+            <div class="col">
+            <h4>Total Intrest:</h4>
+          </div>
+          <div class="col items-end">
+            <h4 id="totalInterest">0</h4>
+          </div>
+          </div>
+          <div class="row">
+            <div class="col">
+            <h4>Total Cost:</h4>
+          </div>
+          <div class="col items-end">
+            <h4 id="totalCost">0</h4>
+          </div>
+          </div>
+        </div>
+        </div>
+        
+      </div>
+      <div class="row">
+        <div class="col-12 border-top border-dark border-2">
+          
+          <p class="motgage-result"><span id="mortgage-final-result"></span></p>
+          <div class="table-responsive">
+            <table class="table table-borderless table-striped mt-2" id="resultsTable">
+              <thead class="table-dark">
+                <tr>
+                  <th>Month:</th>
+                  <th>Payment:</th>
+                  <th>Principal:</th>
+                  <th>Intrest:</th>
+                  <th>Total Interest:</th>
+                  <th>Balance:</th>
+                </tr>
+              </thead>
+              <tbody id="results">
+                <!--template data goes here-->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
     </main>
 
     <footer class="footer container-fluid p-2">
@@ -117,7 +194,7 @@
       <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
       <script>
-        document.getElementById("btnSubmit").addEventListener("click", displayMessage);
+        document.getElementById("btnSubmit").addEventListener("click", getValues);
       </script>
 
     </body>
