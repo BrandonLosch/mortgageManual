@@ -37,7 +37,7 @@ function calculateLoan(loanAmount, payments, rate){
     let htmlString="";
 
     //loop through number of payments to do calculations
-    for (let index = 0; index <+ payments; index++) {
+    for (let index = 0; index < payments; index++) {
         let month=index;
         
         interestPayment = parseFloat(balance*(rate/1200));
@@ -56,7 +56,7 @@ function calculateLoan(loanAmount, payments, rate){
     // display calculated variables to proper positions while inside function
     // use the .toLocaleString to convert to USD format
     resultsObject.monthlyPayment =USD(monthlyPayment);
-    resultsObject.principalPayment =USD(principalPayment);
+    resultsObject.principalPayment =USD(loanAmount);
     resultsObject.totalInterest =USD(totalInterest);
     resultsObject.totalCost =USD(totalCost);
 
