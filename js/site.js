@@ -1,4 +1,4 @@
-let $ = function(num){
+let USD = function(num){
     return num.toLocaleString('en-US', {
         style: 'currency',
         currency: 'USD',
@@ -47,7 +47,7 @@ function calculateLoan(loanAmount, payments, rate){
         balance -= principalPayment;
         balance = Math.abs(parseFloat(balance));
 
-        //concatinate on to htmlString the results of the calculations
+        //add-on to htmlString the results of the calculations
         htmlString += `<tr><td>${month+1}</td><td>${monthlyPayment.toFixed(2)}</td><td>${principalPayment.toFixed(2)}</td><td>${interestPayment.toFixed(2)}</td><td>${totalInterest.toFixed(2)}</td><td>${balance.toFixed(2)}</td></tr>`
     }
     
@@ -55,10 +55,10 @@ function calculateLoan(loanAmount, payments, rate){
 
     // display calculated variables to proper positions while inside function
     // use the .toLocaleString to convert to USD format
-    resultsObject.monthlyPayment =$(monthlyPayment);
-    resultsObject.principalPayment =$(principalPayment);
-    resultsObject.totalInterest =$(totalInterest);
-    resultsObject.totalCost =$(totalCost);
+    resultsObject.monthlyPayment =USD(monthlyPayment);
+    resultsObject.principalPayment =USD(principalPayment);
+    resultsObject.totalInterest =USD(totalInterest);
+    resultsObject.totalCost =USD(totalCost);
 
     resultsObject.htmlString = htmlString;
 
